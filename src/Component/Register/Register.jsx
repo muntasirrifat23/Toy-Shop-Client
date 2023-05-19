@@ -1,8 +1,43 @@
-import React from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContest } from '../Auth/Auth';
 
 const Register = () => {
+    const { createUser } = useContext(AuthContest);
+    const formRef = useRef(null);
+    const [error, setError] = useState(''); 
+
+    const handleRegisterPage = (event) => {
+        event.preventDefault();       
+
+        const from = event.target;
+        const name = from.name.value;
+        const email = from.email.value;
+        const password = from.password.value;
+        const file = from.file.value;
+        console.log(name, email, password, file); 
+
+        if (password.length<6) {
+            setError("Add at least 6 character password");
+            return;
+        }
+        formRef.current.reset();
+        createUser(email, password)
+        .then(result => {
+            const myUser = result.user;
+            console.log(myUser);
+            setError('');
+        })
+        .catch(err => {
+            console.log(err.message);
+            setError(err.message);
+        })
+}
+
+
+
     return (
+        <form onSubmit={handleRegisterPage} ref={formRef}>
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
 
@@ -38,7 +73,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input type="file" name='file' className="file-input file-input-bordered w-full max-w-xs" />
+                                <input type="file" name='file' className="file-input file-input-bordered w-full max-w-xs" required />
 
                             </div>
 
@@ -56,10 +91,13 @@ const Register = () => {
 
                             <button className="btn btn-primary">Login</button>
                         </div>
+                        <p className='text-red-700'>{error}</p>
                     </div>
                 </div>
             </div>
         </div>
+        </form>
+       
     );
 };
 

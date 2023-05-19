@@ -9,7 +9,7 @@ const Login = () => {
     const formRef = useRef(null);
     const [error, setError] = useState('');
     const location = useLocation();
-    const frm = location.state?.frm?.pathname || '/login';
+    const frm = location.state?.frm?.pathname || '/';
 
     let navigate = useNavigate();
 
@@ -83,7 +83,7 @@ const Login = () => {
                                 </label>
                             </div>
 
-                            <p className='text-danger'>{error}</p>
+                            
 
                             {/* Button */}
                             <div className="form-control mt-6">
@@ -96,7 +96,7 @@ const Login = () => {
                                 </div>
 
                                 <button className="btn btn-primary">Login</button>
-
+                                <p className='text-red-700'>{error}</p>
                             </div>
                         </div>
                     </div>
