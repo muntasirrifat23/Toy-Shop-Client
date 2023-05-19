@@ -1,9 +1,59 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import './Login.css'
+import React, { useContext, useRef, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContest } from '../Auth/Auth';
+
 const Login = () => {
+    const { signIn } = useContext(AuthContest);
+    const {googleSignIn} =useContext(AuthContest);
+
+    const formRef = useRef(null);
+    const [error, setError] = useState('');
+    const location = useLocation();
+    const frm = location.state?.frm?.pathname || '/login';
+
+    let navigate = useNavigate();
+
+    const handleLogin = (event) => {
+        event.preventDefault();
+        setError('')
+        const from = event.target;
+        const email = from.email.value;
+        const password = from.password.value;
+        console.log(email, password);
+
+        if (password.length < 6) {
+            setError('Set minimum 6 character password');
+            return;
+        }
+        formRef.current.reset();
+        if (email, password) {
+            signIn(email, password)
+                .then(result => {
+                    const ourUser = result.user;
+                    console.log(ourUser);
+                    navigate(frm, { replace: true });
+                    setError('');
+                })
+                .catch(err => {
+                    console.log(err.message);
+                    setError(err.message);
+                });
+        }
+    };
+    // Google
+    const handleGoogle=()=>{
+        googleSignIn()
+        .then(res=>{
+            console.log(res.user);
+        })
+        .catch(err=>{
+            console.log(err.message);
+        });
+    };
+
+
     return (
+        <form onSubmit={handleLogin} ref={formRef}>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
 
@@ -32,18 +82,29 @@ const Login = () => {
                                     </div>
                                 </label>
                             </div>
+
+                            <p className='text-danger'>{error}</p>
+
                             {/* Button */}
                             <div className="form-control mt-6">
-                                <div className='g-btn'>
-                                <button className="btn btn-circle mb-2"> G </button>
+
+                                <div className="flex flex-col w-full border-opacity-50">
+                                    <div className="divider">OR</div>
+                                    <div className=' text-center'>
+                                        <button onClick={handleGoogle} className="btn btn-circle mb-2"> G </button>
+                                    </div>
                                 </div>
 
                                 <button className="btn btn-primary">Login</button>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+        </form>
+
     );
 };
 
