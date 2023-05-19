@@ -5,7 +5,7 @@ import { FaGrunt } from 'react-icons/fa';
 
 const Nav = () => {
     return (
-        <div>
+        <div className='m-4'>
 
             <div className="navbar bg-base-100">
                 <div className="dropdown">
@@ -24,7 +24,7 @@ const Nav = () => {
                     </ul>
                 </div>
 
-                <div className="navbar-start font-bold text-xl text-teal-600">
+                <div className="navbar-start font-bold text-xl text-teal-600 text-3xl">
                     <FaGrunt />Toy Shop
                 </div>
 

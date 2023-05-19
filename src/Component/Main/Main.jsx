@@ -1,9 +1,11 @@
 import React from 'react';
+import Section1 from '../Section1/Section1';
 
 const Main = () => {
     return (
         <div>
-            <h1>hjasjkcjasjkuz</h1>
+            <Section1></Section1>
+            
         </div>
     );
 };
