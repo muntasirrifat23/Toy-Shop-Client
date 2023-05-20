@@ -91,7 +91,7 @@ const Login = () => {
                                 <div className="flex flex-col w-full border-opacity-50">
                                     <div className="divider">OR</div>
                                     <div className=' text-center'>
-                                        <button onClick={handleGoogle} className="btn btn-circle mb-2"> G </button>
+                                        <button onClick={handleGoogle} className="btn btn-circle mb-2 bg-orange-600"> G </button>
                                     </div>
                                 </div>
 
