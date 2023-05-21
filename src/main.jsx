@@ -22,47 +22,51 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
-    children:[
+    children: [
+      {
+        path: '/',
+        element: <Main></Main>
+      },
+      {
+        path: "/data",
+        element: <All></All>,
+        
+      },
         {
-        path:'/',
-        element:<Main></Main>
+          path: "/data/:id",
+          element: <Details></Details>,
+          loader: ({ params }) => fetch(`https://server-11-muntasirrifat23.vercel.app/data/${params.id}`)
         },
-        {
-          path: "/all",
-          element:<All></All> 
-        },
-        {
-          path: "/add",
-          element:<AddToy></AddToy>
-        },
-        {
-          path: "/login",
-          element:<Login></Login>
-        },
-        {
-          path: "/register",
-          element:<Register></Register>
-        },
-        {
-          path: "/blog",
-          element:<Blog></Blog>,
-        }, 
-        {
-          path: "/details",
-          element:<Details></Details>,
-        }, 
+      
+      {
+        path: "/add",
+        element: <AddToy></AddToy>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
+      },
+
     ]
   },
   {
-    path:'*',
-    element:<NotFound></NotFound>
+    path: '*',
+    element: <NotFound></NotFound>
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Auth>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
 
     </Auth>
   </React.StrictMode>,

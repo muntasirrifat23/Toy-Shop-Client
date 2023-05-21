@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import './Cards.css'
 const Cards = ({ toy }) => {
-    const {id, image, name, price, rating } = toy;
+    const {_id, image, name, price, rating } = toy;
 
 
 
@@ -33,7 +33,7 @@ const Cards = ({ toy }) => {
 
 
                             <div className="card-actions">
-                                <Link to={`/add/${id}`}>
+                                <Link to={`/data/${_id}`}>
                                     <button className="btn btn-primary bg-green-800">View Details</button>
                                 </Link>
                             </div>

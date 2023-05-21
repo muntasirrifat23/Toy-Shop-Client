@@ -28,8 +28,9 @@ const Nav = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 rounded-box w-52">
                         <li>
                             <Link className='mr-4 font-semibold' to='/'>Home </Link>
-                            <Link className='mr-4 font-semibold' to='/all'> All Toys</Link>
+                            <Link className='mr-4 font-semibold' to='/data'> All Toys</Link>
                             <Link className='mr-4 font-semibold' to='/add'>Add Toys</Link>
+                            {/* <Link className='mr-4 font-semibold' to='/data'>Details</Link> */}
                             <Link className='mr-4 font-semibold' to='/login'>Login</Link>
                             <Link className='mr-4 font-semibold' to='/register'>Registration</Link>
                             <Link className='mr-4 font-semibold' to='/blog'>Blogs</Link>
@@ -48,7 +49,8 @@ const Nav = () => {
                             <li>
                                 <div className='navbar-center'>
                                     <Link className='mr-4 font-semibold' to='/'>Home </Link>
-                                    <Link className='mr-4 font-semibold' to='/all'> All Toys</Link>
+                                    <Link className='mr-4 font-semibold' to='/data'> All Toys</Link>
+                                    {/* <Link className='mr-4 font-semibold' to='/data'>Details</Link> */}
                                     <Link className='mr-4 font-semibold' to='/add'>Add Toys</Link>
                                     <Link className='mr-4 font-semibold' to='/login'>Login</Link>
                                     <Link className='mr-4 font-semibold' to='/register'>Registration</Link>
@@ -65,7 +67,7 @@ const Nav = () => {
           user?
           (<Button onClick={handleOut} className='bg-green-500 m-5'>LogOut
             <span><img className='rounded-full w-1/3 ml-4 justify-end' src={user?.photoURL}></img> </span> </Button>):
-          (<Link to='/login'></Link>)
+          (<Link to='/login' className='bg-green-500 m-5 rounded p-3 text-white font-bold'>Login</Link>)
         }
                 </div>
             </div>
