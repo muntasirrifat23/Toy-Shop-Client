@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGrunt } from 'react-icons/fa';
+import { Button } from 'react-bootstrap';
+import { AuthContest } from '../Auth/Auth';
 
 
 const Nav = () => {
+    const {user,logOut} = useContext(AuthContest);
+    const handleOut=()=>{
+      logOut()
+      .then(result=>
+        console.log(result)
+      )
+      .catch(err=>
+        console.log(err.message)
+        )
+    }
     return (
         <div className='m-4'>
+             
 
             <div className="navbar bg-base-100">
                 <div className="dropdown">
@@ -48,7 +61,12 @@ const Nav = () => {
                 </div>
 
                 <div className="navbar-end">
-                    <a className="btn">Get started</a>
+                {
+          user?
+          (<Button onClick={handleOut} className='bg-green-500 m-5'>LogOut
+            <span><img className='rounded-full w-1/3 ml-4 justify-end' src={user?.photoURL}></img> </span> </Button>):
+          (<Link to='/login'></Link>)
+        }
                 </div>
             </div>
         </div>

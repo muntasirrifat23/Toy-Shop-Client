@@ -16,6 +16,7 @@ import Blog from './Component/Blog/Blog.jsx';
 import Main from './Component/Main/Main.jsx';
 import Auth from './Component/Auth/Auth.jsx';
 import NotFound from './Component/NotFound/NotFound.jsx';
+import Details from './Component/Details/Details.jsx';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
         {
           path: "/blog",
           element:<Blog></Blog>,
+        }, 
+        {
+          path: "/details",
+          element:<Details></Details>,
         }, 
     ]
   },
