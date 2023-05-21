@@ -29,7 +29,7 @@ const Main = () => {
             <Container className='text-center'>
             <div className='mb-8 mx-auto ml-20 text-center '>
                 <div  className='text-green-800 font-semibold text-xl flex justify-center text-center '>
-                    <div>
+                    <div className='mr-2'>
                     <h1 data-aos="fade-up">Bangali Toy </h1> 
                     </div>
                     <div>

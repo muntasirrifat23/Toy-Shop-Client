@@ -18,6 +18,7 @@ import Auth from './Component/Auth/Auth.jsx';
 import NotFound from './Component/NotFound/NotFound.jsx';
 import Details from './Component/Details/Details.jsx';
 import PrivateRoute from './Component/PrivateRoute.jsx';
+import Mytoy from './Component/MyToy/Mytoy.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
       {
         path: "/data",
         element: <All></All>,
+        
+      },
+      {
+        path: "/myToy",
+        element: <Mytoy></Mytoy>,
         
       },
         {

@@ -29,6 +29,7 @@ const Nav = () => {
                         <li>
                             <Link className='mr-4 font-semibold' to='/'>Home </Link>
                             <Link className='mr-4 font-semibold' to='/data'> All Toys</Link>
+                            <Link className='mr-4 font-semibold' to='/myToy'> My Toys</Link>
                             <Link className='mr-4 font-semibold' to='/add'>Add Toys</Link>
                             {/* <Link className='mr-4 font-semibold' to='/data'>Details</Link> */}
                             <Link className='mr-4 font-semibold' to='/login'>Login</Link>
@@ -38,7 +39,8 @@ const Nav = () => {
                     </ul>
                 </div>
 
-                <div className="navbar-start font-bold text-xl text-teal-600 text-3xl">
+
+                <div className="navbar-start font-bold text-xl text-teal-600 text-4xl">
                     <FaGrunt />Toy Shop
                 </div>
 
@@ -50,6 +52,7 @@ const Nav = () => {
                                 <div className='navbar-center'>
                                     <Link className='mr-4 font-semibold' to='/'>Home </Link>
                                     <Link className='mr-4 font-semibold' to='/data'> All Toys</Link>
+                                    <Link className='mr-4 font-semibold' to='/myToy'> My Toys</Link>
                                     {/* <Link className='mr-4 font-semibold' to='/data'>Details</Link> */}
                                     <Link className='mr-4 font-semibold' to='/add'>Add Toys</Link>
                                     <Link className='mr-4 font-semibold' to='/login'>Login</Link>
