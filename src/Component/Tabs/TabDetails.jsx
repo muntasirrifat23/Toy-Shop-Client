@@ -7,6 +7,7 @@ const TabDetails = () => {
 
     const [allCars, setAllCars] = useState([]);
     const [allRobot, setAllRobot] = useState([]);
+    const [allgirls, setAllGirls] = useState([]);
 
 // 1
     useEffect(() => {
@@ -23,6 +24,14 @@ const TabDetails = () => {
             .then(data => setAllRobot(data))
             .catch(err => console.log(err))
     }, [])
+    // 3
+    useEffect(() => {
+        fetch('https://server-11-lac.vercel.app/girls')
+            .then(res => res.json())
+            .then(data => setAllGirls(data))
+            .catch(err => console.log(err))
+    }, [])
+
 
     return (
         <div className='text-center m-8 mt-20 mb-20 '>
@@ -90,10 +99,30 @@ const TabDetails = () => {
                 </TabPanel>
 
                 {/* 3333333333333333333333333 */}
-                <TabPanel>
-                    <h2>Any content 3</h2>
-                    <h2>Any content 3</h2>
-                    <h2>Any content 3</h2>
+                <TabPanel className='flex justify-center mt-5'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex justify-center'>
+                        {
+                            allgirls.map(girl => <p key={girl.id}>
+                                <div className="card w-96 bg-base-100 shadow-xl text-center">
+                                    <figure><img src={girl.image} alt="Shoes" /></figure>
+                                    <div className="card-body">
+                                        <h2 className="card-title text-2xl font-bold text-green-800">{girl.name}</h2>
+                                        <div className='flex'>
+                                            <p className='text-green-800 font-semibold text-lg card-title'>Price: ${girl.price}</p>
+                                            <h6 className='align-items-center text-red-900'>{girl.rating}
+                                                <Rating placeholderRating={girl.rating}
+                                                    readonly
+                                                    emptySymbol={<FaRegStar />}
+                                                    placeholderSymbol={<FaStar />}
+                                                    fullSymbol={<FaStar />}>
+                                                </Rating>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>)
+                        }
+                    </div>
                 </TabPanel>
             </Tabs>
         </div>
