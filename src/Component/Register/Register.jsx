@@ -87,7 +87,7 @@ const Register = () => {
                         <div className="form-control mt-6">
 
 
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary">Registration</button>
                         </div>
                         <p className='text-red-700'>{error}</p>
                     </div>

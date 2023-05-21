@@ -17,6 +17,7 @@ import Main from './Component/Main/Main.jsx';
 import Auth from './Component/Auth/Auth.jsx';
 import NotFound from './Component/NotFound/NotFound.jsx';
 import Details from './Component/Details/Details.jsx';
+import PrivateRoute from './Component/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,13 +35,13 @@ const router = createBrowserRouter([
       },
         {
           path: "/data/:id",
-          element: <Details></Details>,
+          element:<PrivateRoute><Details></Details> </PrivateRoute> ,
           loader: ({ params }) => fetch(`https://server-11-muntasirrifat23.vercel.app/data/${params.id}`)
         },
       
       {
         path: "/add",
-        element: <AddToy></AddToy>
+        element:<PrivateRoute><AddToy></AddToy> </PrivateRoute> 
       },
       {
         path: "/login",
